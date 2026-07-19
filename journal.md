@@ -11,5 +11,6 @@ UOR & UOT should be connected to the motherboard from the cam module. They are w
 3. 5V: To deliver power to components
 4. GND: To ground all components
 5. GPIO12: This one connects the GPIO12 pin on the MB to the OUT pin of the PIR sensor. The ESP32-CAM uses a standard 4 bit mode, which uses up six pins (GPIOs 2, 4, 12, 13, 14, & 15), but if I switch to using just 1 bit, then it will only take up three pins (GPIOs 2, 14, 15). I need to use 1 bit in order to use the micro SD card to store my data from the camera. Also have to make sure to configure the SD card to 1 bit mode.
+6. You have to connect the camera module's GPIO0 pin to GND but disconnected for now until you upload the code to put the module in flashing mode, and then remove it afterwards.
 
 I think understanding what the pins do on the camera module was the hardest part of today.
