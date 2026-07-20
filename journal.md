@@ -15,6 +15,10 @@ Right now, I have the camera set to wait one second before capturing another pho
 ## 7/19/26
 ### What I did
 I did the wiring for the three components of the project: the ESP32-CAM, the PIR sensor, and the ESP32-CAM motherboard (MB) (and also the power supply module connected on the breadboard).
+
+<img width="460" height="340" alt="Screenshot 2026-07-20 at 9 53 11 PM" src="https://github.com/user-attachments/assets/a9a49c79-bca0-4918-adbd-fe57959bb6b4" />
+
+
 ### What I learned
 Because I was using the motherboard and not the FTDI adapter on the ESP32-CAM and I want to connect a sensor to the camera module, I had to figure out which GPIOs corresponded to what function on the ESP32-CAM. Here is a diagram of what all of the GPIOs do: <img width="1000" height="445" alt="image" src="https://github.com/user-attachments/assets/9abd23bd-37af-4d07-9102-aa172263af48" /> (from https://randomnerdtutorials.com/esp32-cam-pir-motion-detector-photo-capture/) For this project, all I have to focus on are five of the pins:
 
