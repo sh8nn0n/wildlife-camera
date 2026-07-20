@@ -1,4 +1,17 @@
 # Journal
+## 7/20/26
+### What I did
+I modified the ESP32 camera server example sketch so that instead of running a web server on WiFi, I'm capturing single photos and saving them onto the microSD card. 
+### What I learned
+Because I didn't need the server, I could delete all the code relating to those. I also had to make sure to include: if (!SD_MMC.begin("/sdcard", true)) {
+  Serial.println("SD Card Mount Failed");
+  return;
+}
+in order to free up pin 12 for the pir sensor.
+Another hard part was finding the syntax for writing the image data onto the sd card (highlighted lines here): <img width="837" height="197" alt="Screenshot 2026-07-20 at 11 43 50 AM" src="https://github.com/user-attachments/assets/173a945d-a0fe-4b5b-a110-25a9b35c37d0" />
+
+Right now, I have the camera set to wait one second before capturing another photo, but maybe I'll figure out a way so it can capture it quicker but also not take up so much data.
+
 ## 7/19/26
 ### What I did
 I did the wiring for the three components of the project: the ESP32-CAM, the PIR sensor, and the ESP32-CAM motherboard (MB) (and also the power supply module connected on the breadboard).
