@@ -1,4 +1,18 @@
 # Journal
+## 7/23/26 & 7/24/26
+### What I did
+I spent an hour or two debugging why the serial monitor kept saying "camera capture failed," only to realize that I forgot to select the right esp 32 board in the other tab...
+AT LAST! the camera started taking photos, but instead of taking them only when the infrared sensor detected a person, it was taking them every second: <img width="677" height="222" alt="Screenshot 2026-07-24 at 2 36 04 PM" src="https://github.com/user-attachments/assets/8308e5c1-552b-439c-97b1-d845ff455b55" />
+
+So I went back into the code to define a sleep and wake up sequence, where once the PIR sensor detected a living being, it would tell the camera, "WAKE UP!," and the camera would come alive and snap a photo. Otherwise, it would just be asleep. This helped save battery when I want to take this project outside to take photos.
+When the PIR sensor activates, the camera knows to take a photo now because I've passed this command at the beginning of the setup <img width="328" height="32" alt="Screenshot 2026-07-24 at 3 04 37 PM" src="https://github.com/user-attachments/assets/c1791f07-c8c1-4253-9db2-315de475bd4d" />, which allows this snippet of code to run in the loop:
+<img width="775" height="85" alt="Screenshot 2026-07-24 at 2 39 09 PM" src="https://github.com/user-attachments/assets/4e5fea43-3ba9-4afe-ba8e-297e2b5fbfbf" />. 
+
+Previously, I had thought that simply detecting when the PIR is on HIGH mode is enough to trigger the wakeup mode AND snap the photo, but because everytime the PIR goes to HIGH, it only pulses there for a couple of seconds, and by the time that the system checked everything in the setup, the PIR had already gone to LOW. However, I was able to take photos some of the time because the sensor I'm using is pretty cheap so it wasn't that reliable.
+
+Now, using the correct logic for the wakeup and sleep sequence and hooking the whole thing to a USB powerbank, I can successfully take photos when the PIR sensor detects a living being in front of it!
+
+
 ## 7/20/26
 ### What I did
 I modified the ESP32 camera server example sketch so that instead of running a web server on WiFi, I'm capturing single photos and saving them onto the microSD card. 
